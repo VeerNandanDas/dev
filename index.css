@@ -161,7 +161,7 @@ ol {
 }
 
 .section {
-  padding: var(--space-2xl) 0;
+  padding: var(--space-xl) 0;
   position: relative;
 }
 
@@ -294,41 +294,21 @@ ol {
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
-.stagger-children.visible>*:nth-child(1) {
-  transition-delay: 0.05s;
+.stagger-children.visible>* {
   opacity: 1;
   transform: translateY(0);
 }
 
-.stagger-children.visible>*:nth-child(2) {
-  transition-delay: 0.1s;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stagger-children.visible>*:nth-child(3) {
-  transition-delay: 0.15s;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stagger-children.visible>*:nth-child(4) {
-  transition-delay: 0.2s;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stagger-children.visible>*:nth-child(5) {
-  transition-delay: 0.25s;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stagger-children.visible>*:nth-child(6) {
-  transition-delay: 0.3s;
-  opacity: 1;
-  transform: translateY(0);
-}
+.stagger-children.visible>*:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children.visible>*:nth-child(2) { transition-delay: 0.10s; }
+.stagger-children.visible>*:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children.visible>*:nth-child(4) { transition-delay: 0.20s; }
+.stagger-children.visible>*:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children.visible>*:nth-child(6) { transition-delay: 0.30s; }
+.stagger-children.visible>*:nth-child(7) { transition-delay: 0.35s; }
+.stagger-children.visible>*:nth-child(8) { transition-delay: 0.40s; }
+.stagger-children.visible>*:nth-child(9) { transition-delay: 0.45s; }
+.stagger-children.visible>*:nth-child(10) { transition-delay: 0.50s; }
 
 /* ═══════════════════════════════════
    NAVIGATION
@@ -683,7 +663,7 @@ ol {
   height: 100%;
   object-fit: cover;
   transform: scale(1.15);
-  filter: saturate(0.85) contrast(1.2) brightness(1.1) blur(6px) url(#metallic-displacement);
+  filter: saturate(0.85) contrast(1.2) brightness(1.1) blur(1.2px) url(#metallic-displacement);
   z-index: 0;
   opacity: 0.9;
   transition: filter 0.3s ease;
@@ -874,6 +854,7 @@ ol {
 
 .about-photo {
   width: 320px;
+  
   height: 420px;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -889,9 +870,10 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
   pointer-events: none;
+  transform: scale(1.20) translateY(-20px);
   transition: transform 0.4s var(--ease);
 }
 
@@ -901,7 +883,7 @@ ol {
 }
 
 .about-photo:hover img {
-  transform: scale(1.04);
+  transform: scale(1.28) translateY(-20px);
 }
 
 .about-photo::before {
@@ -1374,16 +1356,16 @@ ol {
 }
 
 /* ═══════════════════════════════════
-   SECTION 5 — SYSTEM ARCHITECTURE
+   SECTION 5 — GITHUB CONTRIBUTIONS
    ═══════════════════════════════════ */
 
-.architecture {
+.contributions {
   background: var(--bg-secondary);
   position: relative;
   overflow: hidden;
 }
 
-.architecture::before {
+.contributions::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1394,143 +1376,33 @@ ol {
   background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
 }
 
-.arch-flow {
+/* Repository Jump List styling */
+.repo-jump-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: var(--space-lg) 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
 }
 
-.arch-flow-node {
-  padding: 24px 28px;
+.repo-jump-tag {
+  display: inline-block;
+  padding: 10px 18px;
   font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  border: 1px solid var(--accent-border);
-  border-radius: var(--radius-md);
-  background: var(--bg-primary);
-  white-space: nowrap;
-  text-align: center;
-  min-width: 110px;
-  transition: all 0.4s var(--ease);
-  position: relative;
-}
-
-.arch-flow-node::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.4s;
-  padding: 1px;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-}
-
-.arch-flow-node:hover {
-  box-shadow: 0 0 32px var(--accent-glow), 0 0 64px rgba(59, 130, 246, 0.08);
-  transform: translateY(-3px);
-}
-
-.arch-flow-node:hover::before {
-  opacity: 1;
-}
-
-.arch-flow-node .node-label {
-  font-size: 0.5625rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-tertiary);
-  margin-top: 8px;
-  display: block;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: all 0.3s var(--ease);
 }
 
-.arch-flow-connector {
-  width: 40px;
-  height: 1px;
-  flex-shrink: 0;
-  position: relative;
-  overflow: visible;
-}
-
-/* animated pulse along connector */
-.arch-flow-connector .connector-line {
-  width: 100%;
-  height: 1px;
-  background: var(--accent-border);
-  position: relative;
-}
-
-.arch-flow-connector .connector-line::after {
-  content: '';
-  position: absolute;
-  right: -1px;
-  top: -4px;
-  border-left: 6px solid var(--accent);
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-}
-
-.arch-flow-connector .connector-pulse {
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
-  animation: pulse-travel 3s linear infinite;
-  opacity: 0;
-}
-
-@keyframes pulse-travel {
-  0% {
-    left: 0;
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    left: calc(100% - 6px);
-    opacity: 0;
-  }
-}
-
-.arch-flow-connector:nth-child(2) .connector-pulse {
-  animation-delay: 0s;
-}
-
-.arch-flow-connector:nth-child(4) .connector-pulse {
-  animation-delay: 0.5s;
-}
-
-.arch-flow-connector:nth-child(6) .connector-pulse {
-  animation-delay: 1s;
-}
-
-.arch-flow-connector:nth-child(8) .connector-pulse {
-  animation-delay: 1.5s;
-}
-
-.arch-flow-connector:nth-child(10) .connector-pulse {
-  animation-delay: 2s;
+.repo-jump-tag:hover {
+  color: var(--text-primary);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--accent-glow), 0 0 1px var(--accent);
 }
 
 /* ═══════════════════════════════════
@@ -1863,11 +1735,6 @@ ol {
     width: 260px;
     height: 340px;
   }
-
-  .arch-flow {
-    justify-content: flex-start;
-    padding: var(--space-md) 0;
-  }
 }
 
 /* ═══════════════════════════════════
@@ -1961,16 +1828,6 @@ ol {
     text-align: center;
   }
 
-  .arch-flow-node {
-    padding: 16px 18px;
-    font-size: 0.75rem;
-    min-width: 90px;
-  }
-
-  .arch-flow-connector {
-    width: 20px;
-  }
-
   .section-title {
     font-size: 1.75rem;
   }
@@ -2005,4 +1862,106 @@ ol {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-border);
+}
+
+/* ═══════════════════════════════════
+   GITHUB CONTRIBUTION CALENDAR CUSTOM STYLING
+   ═══════════════════════════════════ */
+.calendar-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 12px 0;
+}
+
+.calendar-container .calendar {
+  border: none !important;
+  background: transparent !important;
+  font-family: inherit;
+}
+
+.calendar-container svg.js-calendar-graph-svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom palette matching Veer Nandan Das's violet-blue accent (#7C8FE4) */
+.calendar-container rect.ContributionCalendar-day[data-level="0"],
+.calendar-container rect.day[data-level="0"] {
+  fill: #15151D !important;
+  rx: 2px;
+  ry: 2px;
+}
+.calendar-container rect.ContributionCalendar-day[data-level="1"],
+.calendar-container rect.day[data-level="1"] {
+  fill: #2C3558 !important;
+  rx: 2px;
+  ry: 2px;
+}
+.calendar-container rect.ContributionCalendar-day[data-level="2"],
+.calendar-container rect.day[data-level="2"] {
+  fill: #4D5990 !important;
+  rx: 2px;
+  ry: 2px;
+}
+.calendar-container rect.ContributionCalendar-day[data-level="3"],
+.calendar-container rect.day[data-level="3"] {
+  fill: #7C8FE4 !important; /* Accent color */
+  rx: 2px;
+  ry: 2px;
+}
+.calendar-container rect.ContributionCalendar-day[data-level="4"],
+.calendar-container rect.day[data-level="4"] {
+  fill: #A7B6FC !important;
+  rx: 2px;
+  ry: 2px;
+}
+
+/* Label & legend overrides */
+.calendar-container .calendar .month,
+.calendar-container .calendar .wday,
+.calendar-container .calendar text {
+  fill: var(--text-secondary) !important;
+  font-size: 9px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Tooltip & Calendar UI Overrides */
+.calendar-container .contrib-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-md);
+}
+
+.calendar-container .contrib-column {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) !important;
+  text-align: center;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+
+.calendar-container .contrib-column:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.calendar-container .contrib-column .text-muted {
+  display: block;
+  font-size: 0.6875rem !important;
+  text-transform: uppercase;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.calendar-container .contrib-column .contrib-number {
+  display: block;
+  font-size: 1.75rem !important;
+  font-weight: 800;
+  color: var(--accent) !important;
+  margin: 8px 0;
 }
