@@ -873,7 +873,7 @@ ol {
   object-position: center;
   display: block;
   pointer-events: none;
-  transform: scale(1.20) translateY(-20px);
+  transform: scale(1.05) translateY(-5px);
   transition: transform 0.4s var(--ease);
 }
 
@@ -883,7 +883,7 @@ ol {
 }
 
 .about-photo:hover img {
-  transform: scale(1.28) translateY(-20px);
+  transform: scale(1.12) translateY(-5px);
 }
 
 .about-photo::before {
